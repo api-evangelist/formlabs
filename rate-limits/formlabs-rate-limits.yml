@@ -1,0 +1,51 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Formlabs
+providerId: formlabs
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: true
+tags:
+- 3D Printing
+- Additive Manufacturing
+- SLA
+- SLS
+- Hardware
+- Dashboard
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Formlabs Web API (Dashboard Developer API) enforces two documented rate
+  limits: an IP-based limit of 100 requests per second and a user-based limit of
+  1500 requests per hour. Requests that exceed a limit return HTTP 429 with a
+  Retry-after header indicating when to retry. The Local API (PreFormServer) runs
+  on the user's own machine and does not publish account-level rate limits.
+notes: >-
+  Limits are taken from the published Formlabs Web API reference and may change;
+  re-verify against the live reference during reconciliation.
+sources:
+- https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
+- https://support.formlabs.com/s/topic/Developer-Portal
+responseCodes:
+  throttled: 429
+limits:
+- name: Requests Per Second (IP)
+  scope: ip
+  metric: requests
+  limit: 100
+  notes: IP-based limit of 100 requests per second on the Web API.
+- name: Requests Per Hour (User)
+  scope: account
+  metric: requests
+  limit: 1500
+  notes: User-based limit of 1500 requests per hour on the Web API.
+policies:
+- name: Retry-After
+  description: Throttled requests return HTTP 429 with a Retry-after header; clients should wait the indicated interval before retrying.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor the Retry-after header.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,109 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Formlabs
+providerId: formlabs
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- 3D Printing
+- Additive Manufacturing
+- SLA
+- SLS
+- Hardware
+- Dashboard
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Formlabs spend. The developer platform (Web API and Local API)
+  is free for printer owners and carries no usage-based API charge, so there is
+  no metered API cost stream to allocate. The relevant spend is capital and
+  consumable: 3D printer hardware (capex), resin cartridges and SLS powder
+  (variable material cost per print), resin tanks (wear consumable), and any
+  software/service subscriptions. The Web API is itself a FinOps enabler - print,
+  consumable, and event data can be exported to attribute material cost per job,
+  team, or department.
+notes: >-
+  No API-metered billing exists; cost columns describe hardware and materials.
+  Material and hardware prices vary by region and reseller - verify on
+  formlabs.com during reconciliation.
+sources:
+- https://formlabs.com/materials/developer-platform/
+- https://formlabs.com/store/
+- https://support.formlabs.com/s/topic/Developer-Portal
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Formlabs
+serviceCategory: Manufacturing and Hardware
+billingModel:
+  pricingCategory: Purchase
+  billingFrequency: Per Order
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+focusColumns:
+  ServiceName: Formlabs Developer Platform
+  ServiceCategory: Manufacturing and Hardware
+  ProviderName: Formlabs
+  PublisherName: Formlabs
+  InvoiceIssuerName: Formlabs
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Purchase
+meters:
+- name: api_requests
+  description: Web API and Local API requests. Not billed - the developer API is free for printer owners.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - api
+- name: resin_volume_dispensed_ml
+  description: Resin dispensed from cartridges per print, the main per-job material cost driver; derivable from print and cartridge data via the Web API.
+  unit: milliliters
+  aggregation: sum
+  dimensions:
+  - account
+  - printer
+  - material
+- name: print_count
+  description: Completed prints, useful for amortizing hardware and tank cost per job.
+  unit: prints
+  aggregation: sum
+  dimensions:
+  - account
+  - printer
+- name: tank_layer_usage
+  description: Layers / print-time accumulated on a resin tank, driving tank replacement (wear) cost.
+  unit: layers
+  aggregation: sum
+  dimensions:
+  - account
+  - tank
+- name: hardware_purchase
+  description: One-time printer hardware purchase (capex), allocated over its useful life.
+  unit: units
+  aggregation: sum
+  dimensions:
+  - account
+  - machine_type
+principles:
+- name: Visibility
+  description: Use the Web API (prints, consumables, events) to export job-level material and printer usage into reporting/ERP/MES systems.
+- name: Allocation
+  description: Use printer groups and print metadata (user, group, labels) to attribute material and machine cost to teams and projects.
+- name: Optimization
+  description: Optimize orientation/supports (Local API) to reduce resin and print time; track tank wear to plan replacements; right-size the printer fleet to demand.
+- name: Accountability
+  description: Assign printer/group owners; review per-job material spend and hardware utilization against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

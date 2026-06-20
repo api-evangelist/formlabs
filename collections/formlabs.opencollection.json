@@ -1,0 +1,251 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Formlabs Web API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Printers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List printers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.formlabs.com/developer/v1/printers/"
+          },
+          "docs": "List all printers registered to the authenticated Dashboard account."
+        },
+        {
+          "info": {
+            "name": "Retrieve a printer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.formlabs.com/developer/v1/printers/{printer_serial}/"
+          },
+          "docs": "Retrieve a single printer by its serial number."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Prints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List and search prints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.formlabs.com/developer/v1/prints/"
+          },
+          "docs": "List and search all prints, filterable by date, material, name, status, machine type, and printer."
+        },
+        {
+          "info": {
+            "name": "List prints for a printer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.formlabs.com/developer/v1/printers/{printer_serial}/prints/"
+          },
+          "docs": "List prints run on a specific printer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Consumables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List resin tanks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.formlabs.com/developer/v1/tanks/"
+          },
+          "docs": "List all resin tanks associated with the account."
+        },
+        {
+          "info": {
+            "name": "List resin cartridges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.formlabs.com/developer/v1/cartridges/"
+          },
+          "docs": "List all resin cartridges associated with the account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.formlabs.com/developer/v1/events/"
+          },
+          "docs": "Poll the account event history, filterable by printer, cartridge, tank, print run, type, and date range."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List printer groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.formlabs.com/developer/v1/groups/"
+          },
+          "docs": "List all printer groups the authenticated account can access."
+        },
+        {
+          "info": {
+            "name": "Create a printer group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.formlabs.com/developer/v1/groups/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Create a new printer group."
+        },
+        {
+          "info": {
+            "name": "Update a printer group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.formlabs.com/developer/v1/groups/{group_id}/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Update a printer group."
+        },
+        {
+          "info": {
+            "name": "Delete a printer group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.formlabs.com/developer/v1/groups/{group_id}/"
+          },
+          "docs": "Delete a printer group."
+        },
+        {
+          "info": {
+            "name": "Move printers into a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.formlabs.com/developer/v1/groups/bulk-add-printers/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"group\": \"<string>\",\n  \"printers\": []\n}"
+            }
+          },
+          "docs": "Move printers into a group."
+        },
+        {
+          "info": {
+            "name": "Invite a user to a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.formlabs.com/developer/v1/groups/{group_id}/members/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"email\": \"<string>\",\n  \"role\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Invite a user to a group."
+        },
+        {
+          "info": {
+            "name": "Update a group membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.formlabs.com/developer/v1/groups/{group_id}/members/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"email\": \"<string>\",\n  \"role\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Update a group membership."
+        },
+        {
+          "info": {
+            "name": "Remove a group member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.formlabs.com/developer/v1/groups/{group_id}/members/"
+          },
+          "docs": "Remove a group member."
+        },
+        {
+          "info": {
+            "name": "List group queue items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.formlabs.com/developer/v1/groups/{group_id}/queue/"
+          },
+          "docs": "List queued print jobs for a printer group."
+        }
+      ]
+    }
+  ]
+}

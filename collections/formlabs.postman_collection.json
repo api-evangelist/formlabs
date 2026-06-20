@@ -1,0 +1,321 @@
+{
+  "info": {
+    "name": "Formlabs Web API",
+    "description": "Formlabs Web API (Dashboard Developer API) for remote monitoring and management of Internet-connected Formlabs printers, prints, consumables, events, and printer groups.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.formlabs.com/developer/v1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Printers",
+      "item": [
+        {
+          "name": "List printers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/printers/",
+              "host": ["{{baseUrl}}"],
+              "path": ["printers", ""]
+            },
+            "description": "List all printers registered to the authenticated Dashboard account."
+          }
+        },
+        {
+          "name": "Retrieve a printer",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/printers/:printer_serial/",
+              "host": ["{{baseUrl}}"],
+              "path": ["printers", ":printer_serial", ""],
+              "variable": [
+                {
+                  "key": "printer_serial",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Retrieve a single printer by its serial number."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Prints",
+      "item": [
+        {
+          "name": "List and search prints",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/prints/",
+              "host": ["{{baseUrl}}"],
+              "path": ["prints", ""],
+              "query": [
+                { "key": "status", "value": "PRINTING", "disabled": true },
+                { "key": "material", "value": "", "disabled": true },
+                { "key": "date__gt", "value": "", "disabled": true }
+              ]
+            },
+            "description": "List and search prints, filterable by date, material, name, status, machine type, and printer."
+          }
+        },
+        {
+          "name": "List prints for a printer",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/printers/:printer_serial/prints/",
+              "host": ["{{baseUrl}}"],
+              "path": ["printers", ":printer_serial", "prints", ""],
+              "variable": [
+                {
+                  "key": "printer_serial",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "List prints run on a specific printer."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Consumables",
+      "item": [
+        {
+          "name": "List resin tanks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/tanks/",
+              "host": ["{{baseUrl}}"],
+              "path": ["tanks", ""]
+            },
+            "description": "List all resin tanks associated with the account."
+          }
+        },
+        {
+          "name": "List resin cartridges",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cartridges/",
+              "host": ["{{baseUrl}}"],
+              "path": ["cartridges", ""]
+            },
+            "description": "List all resin cartridges associated with the account."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "List events",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/",
+              "host": ["{{baseUrl}}"],
+              "path": ["events", ""],
+              "query": [
+                { "key": "printer", "value": "", "disabled": true },
+                { "key": "type", "value": "", "disabled": true },
+                { "key": "date__gt", "value": "", "disabled": true }
+              ]
+            },
+            "description": "Poll the account event history, filterable by printer, cartridge, tank, print run, type, and date range."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Groups",
+      "item": [
+        {
+          "name": "List printer groups",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/groups/",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", ""]
+            },
+            "description": "List all printer groups the authenticated account can access."
+          }
+        },
+        {
+          "name": "Create a printer group",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups/",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", ""]
+            },
+            "description": "Create a new printer group."
+          }
+        },
+        {
+          "name": "Update a printer group",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups/:group_id/",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", ":group_id", ""],
+              "variable": [{ "key": "group_id", "value": "" }]
+            },
+            "description": "Update a printer group."
+          }
+        },
+        {
+          "name": "Delete a printer group",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/groups/:group_id/",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", ":group_id", ""],
+              "variable": [{ "key": "group_id", "value": "" }]
+            },
+            "description": "Delete a printer group."
+          }
+        },
+        {
+          "name": "Move printers into a group",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"group\": \"<string>\",\n  \"printers\": []\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups/bulk-add-printers/",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", "bulk-add-printers", ""]
+            },
+            "description": "Move printers into a group."
+          }
+        },
+        {
+          "name": "Invite a user to a group",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"role\": \"<string>\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups/:group_id/members/",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", ":group_id", "members", ""],
+              "variable": [{ "key": "group_id", "value": "" }]
+            },
+            "description": "Invite a user to a group."
+          }
+        },
+        {
+          "name": "Update a group membership",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"role\": \"<string>\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups/:group_id/members/",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", ":group_id", "members", ""],
+              "variable": [{ "key": "group_id", "value": "" }]
+            },
+            "description": "Update a group membership."
+          }
+        },
+        {
+          "name": "Remove a group member",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/groups/:group_id/members/",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", ":group_id", "members", ""],
+              "variable": [{ "key": "group_id", "value": "" }]
+            },
+            "description": "Remove a group member."
+          }
+        },
+        {
+          "name": "List group queue items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/groups/:group_id/queue/",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", ":group_id", "queue", ""],
+              "variable": [{ "key": "group_id", "value": "" }]
+            },
+            "description": "List queued print jobs for a printer group."
+          }
+        }
+      ]
+    }
+  ]
+}

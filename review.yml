@@ -1,0 +1,90 @@
+aid: formlabs
+name: Formlabs
+review:
+  question: Does Formlabs expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-20'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Formlabs exposes no documented push or streaming surface. The Web API
+    "events" capability is a synchronous, paginated REST polling endpoint
+    (GET /events/), not a webhook, callback, Server-Sent Events stream, or
+    WebSocket. Because there is no asynchronous/event-driven transport to
+    model, no AsyncAPI document was created. Per API Evangelist scope, AsyncAPI
+    is reserved for documented push/streaming surfaces (webhooks, SSE,
+    WebSocket); a poll-only REST feed is fully covered by the OpenAPI document.
+findings:
+  summary: |
+    Formlabs does not publish a documented public WebSocket API. The developer
+    platform consists of two REST APIs over HTTP(S): the Web API (Dashboard
+    Developer API) at https://api.formlabs.com/developer/v1 and the Local API
+    served by PreFormServer on localhost. Both are request/response REST. The
+    Web API's event history is retrieved by polling GET /events/ with filters;
+    there is no documented webhook, push notification, callback URL, SSE, or
+    WebSocket (ws:// or wss://) surface for printer, print, consumable, or event
+    updates. Authentication is OAuth 2.0 Client Credentials (scope
+    developer-api) yielding a 24-hour Bearer token; the Local API additionally
+    supports interactive sign-in to Formlabs Web Services via /login/.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.formlabs.com/developer/v1
+      documented: true
+    - protocol: REST
+      scheme: http
+      baseURL: http://localhost (PreFormServer, configurable port)
+      note: Local API served on the user's own machine; not Internet-exposed by default.
+      documented: true
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events stream is documented; events are retrieved by polling GET /events/.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the Web API or Local API references as of the review date.
+  endpointsConfirmedRest:
+    - GET  https://api.formlabs.com/developer/v1/printers/
+    - GET  https://api.formlabs.com/developer/v1/printers/{printer_serial}/
+    - GET  https://api.formlabs.com/developer/v1/printers/{printer_serial}/prints/
+    - GET  https://api.formlabs.com/developer/v1/prints/
+    - GET  https://api.formlabs.com/developer/v1/tanks/
+    - GET  https://api.formlabs.com/developer/v1/cartridges/
+    - GET  https://api.formlabs.com/developer/v1/events/
+    - GET  https://api.formlabs.com/developer/v1/groups/
+    - POST https://api.formlabs.com/developer/v1/groups/
+    - PATCH https://api.formlabs.com/developer/v1/groups/{group_id}/
+    - DELETE https://api.formlabs.com/developer/v1/groups/{group_id}/
+    - POST https://api.formlabs.com/developer/v1/groups/bulk-add-printers/
+    - POST https://api.formlabs.com/developer/v1/groups/{group_id}/members/
+    - PUT  https://api.formlabs.com/developer/v1/groups/{group_id}/members/
+    - DELETE https://api.formlabs.com/developer/v1/groups/{group_id}/members/
+    - GET  https://api.formlabs.com/developer/v1/groups/{group_id}/queue/
+    - POST https://api.formlabs.com/developer/v1/o/token/
+    - POST https://api.formlabs.com/developer/v1/o/revoke_token/
+sources:
+  - url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
+    type: APIReference
+    note: Web API reference. All endpoints are HTTPS REST; events are polled via GET /events/. No webhook or WebSocket documented.
+  - url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-local-api-latest.html
+    type: APIReference
+    note: Local API reference. REST over HTTP on localhost via PreFormServer; no WebSocket.
+  - url: https://support.formlabs.com/s/topic/Developer-Portal
+    type: Documentation
+    note: Developer Portal overview; describes OAuth 2.0 auth and the REST Web/Local APIs.
+  - url: https://formlabs.com/materials/developer-platform/
+    type: Documentation
+    note: Developer platform landing page; no streaming/WebSocket surface mentioned.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket and no push/streaming protocol surface exists. The "events"
+    capability is a poll-only REST endpoint already covered by the OpenAPI
+    document, so no AsyncAPI document was authored. apis.yml describes the
+    Events sub-API explicitly as a paginated REST polling feed to avoid
+    misrepresenting it as push/webhooks.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

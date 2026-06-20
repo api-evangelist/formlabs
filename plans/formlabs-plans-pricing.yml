@@ -1,0 +1,105 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Formlabs
+providerId: formlabs
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- 3D Printing
+- Additive Manufacturing
+- SLA
+- SLS
+- Hardware
+- Dashboard
+- Plans
+description: >-
+  The Formlabs developer platform (Web API / Dashboard Developer API and Local
+  API) is not sold as a metered API product. It is included at no additional
+  charge for owners of Internet-connected Formlabs printers and Dashboard
+  accounts. There are no per-call, per-token, or tiered API pricing plans. The
+  commercial product is the hardware (printers), consumables (resin cartridges,
+  tanks, SLS powder), and software/service subscriptions; the developer APIs
+  exist to monitor and orchestrate that hardware. Because there is no API price
+  list, the API-plan view is not reconciled.
+notes: >-
+  Pricing here describes hardware and consumables context, not an API plan. The
+  developer API itself is free for printer owners. Hardware, material, and
+  software-subscription prices change and vary by region and reseller; verify on
+  formlabs.com or with a Formlabs sales contact during reconciliation.
+sources:
+- https://formlabs.com/materials/developer-platform/
+- https://formlabs.com/3d-printers/
+- https://formlabs.com/store/
+- https://support.formlabs.com/s/topic/Developer-Portal
+plans:
+- id: formlabs-developer-api
+  name: Developer API (Web API and Local API)
+  type: free
+  description: >-
+    Included free for owners of Internet-connected Formlabs printers and
+    Dashboard accounts. No metered API pricing, no per-call charges, no tiers.
+  entries:
+  - label: Web API / Dashboard Developer API
+    name: web_api
+    type: free
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included with a Formlabs Dashboard account
+    userMultiplied: false
+  - label: Local API (PreFormServer)
+    name: local_api
+    type: free
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included with PreForm / PreFormServer
+    userMultiplied: false
+  elements:
+  - name: Printers
+  - name: Prints
+  - name: Consumables (Tanks and Cartridges)
+  - name: Events
+  - name: Groups
+  - name: Local Job Preparation
+- id: formlabs-hardware
+  name: Hardware and Consumables
+  type: purchase
+  description: >-
+    The commercial product behind the API: 3D printers, resin cartridges,
+    resin tanks, and SLS powder, sold separately from any API access.
+  entries:
+  - label: 3D Printers (SLA / SLS)
+    name: printers
+    type: flat
+    metric: unit
+    limit: -1
+    timeFrame: lifetime
+    geo: global
+    unit: 1
+    price: see formlabs.com (varies by model and region)
+    userMultiplied: false
+  - label: Materials (Resin Cartridges / SLS Powder)
+    name: materials
+    type: usage
+    metric: unit
+    limit: -1
+    timeFrame: usage
+    geo: global
+    unit: 1
+    price: see formlabs.com store (per cartridge / per powder unit)
+    userMultiplied: false
+  elements:
+  - name: Form 4 / Form 4B (SLA)
+  - name: Fuse Series (SLS)
+  - name: Resin Cartridges
+  - name: Resin Tanks
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
