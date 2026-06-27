@@ -151,7 +151,7 @@ apis:
   - url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-local-api-latest.html
     type: APIReference
   - url: https://github.com/Formlabs/formlabs-api-python
-    type: SDK
+    type: SDKs
   description: Local-network REST API served by the PreFormServer application for
     automating job preparation (import, auto-orient, auto-support, auto-layout,
     hollow, label), scene management, print-time estimation, and sending jobs to
