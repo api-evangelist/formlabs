@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/formlabs-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: OAuth2ClientCredentials
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.formlabs.com/developer/v1/o/token/
+    scopes: 1
+  description: OAuth 2.0 Client Credentials flow. Exchange a client_id and client_secret at
+    the token endpoint for a Bearer access token valid for 24 hours, scoped to developer-api.
+    The Formlabs identity provider also supports OpenID Connect for interactive sign-in via
+    PreForm / Local API.
+  sources:
+  - openapi/formlabs-openapi.yml
