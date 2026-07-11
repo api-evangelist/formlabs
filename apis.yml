@@ -157,6 +157,8 @@ apis:
     hollow, label), scene management, print-time estimation, and sending jobs to
     a printer or Fleet Control without launching the PreForm GUI.
 common:
+- type: OAuthScopes
+  url: scopes/formlabs-scopes.yml
 - type: GitHubOrganization
   url: https://github.com/Formlabs
 - type: LinkedIn
@@ -173,6 +175,8 @@ common:
   url: rate-limits/formlabs-rate-limits.yml
 - type: FinOps
   url: finops/formlabs-finops.yml
+- url: https://formlabs.com/blog/
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
