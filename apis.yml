@@ -157,6 +157,8 @@ apis:
     hollow, label), scene management, print-time estimation, and sending jobs to
     a printer or Fleet Control without launching the PreForm GUI.
 common:
+- type: AgenticAccess
+  url: agentic-access/formlabs-agentic-access.yml
 - type: DomainSecurity
   url: security/formlabs-domain-security.yml
 - type: Authentication
