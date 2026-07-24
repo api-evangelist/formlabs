@@ -1,0 +1,109 @@
+openapi: 3.0.1
+info:
+  title: Formlabs Web Consumables Printers API
+  description: The Formlabs Web API (Dashboard Developer API) provides remote monitoring and management of Internet-connected Formlabs products registered to a Dashboard account. It exposes read access to printers, prints, resin tanks, and cartridges, an event history feed, and full CRUD management of printer groups and their print queues. Typical use cases include automated reports on printer and material usage, job history exports, and integration of printer status into ERP / MES / custom systems.
+  termsOfService: https://formlabs.com/terms-of-service/
+  contact:
+    name: Formlabs Developer Support
+    url: https://support.formlabs.com/s/topic/Developer-Portal
+  version: '1.0'
+servers:
+- url: https://api.formlabs.com/developer/v1
+  description: Formlabs Web API (Dashboard Developer API)
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: Printers
+paths:
+  /printers/:
+    get:
+      operationId: listPrinters
+      tags:
+      - Printers
+      summary: List printers
+      description: List all printers registered to the authenticated Dashboard account.
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A paginated list of printers.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrinterList'
+  /printers/{printer_serial}/:
+    get:
+      operationId: getPrinter
+      tags:
+      - Printers
+      summary: Retrieve a printer
+      description: Retrieve a single printer by its serial number.
+      parameters:
+      - name: printer_serial
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested printer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Printer'
+components:
+  schemas:
+    Printer:
+      type: object
+      properties:
+        serial:
+          type: string
+        alias:
+          type: string
+        machine_type_id:
+          type: string
+        printer_status:
+          type: object
+          properties:
+            status:
+              type: string
+            last_pinged_at:
+              type: string
+              format: date-time
+        firmware_version:
+          type: string
+        location:
+          type: string
+        group:
+          type: string
+    PrinterList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Printer'
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      description: OAuth 2.0 Client Credentials flow. Exchange a client_id and client_secret at the token endpoint for a Bearer access token valid for 24 hours, scoped to developer-api. The Formlabs identity provider also supports OpenID Connect for interactive sign-in via PreForm / Local API.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.formlabs.com/developer/v1/o/token/
+          scopes:
+            developer-api: Access the Formlabs Dashboard Developer API

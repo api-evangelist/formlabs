@@ -1,0 +1,267 @@
+openapi: 3.0.1
+info:
+  title: Formlabs Web Consumables Groups API
+  description: The Formlabs Web API (Dashboard Developer API) provides remote monitoring and management of Internet-connected Formlabs products registered to a Dashboard account. It exposes read access to printers, prints, resin tanks, and cartridges, an event history feed, and full CRUD management of printer groups and their print queues. Typical use cases include automated reports on printer and material usage, job history exports, and integration of printer status into ERP / MES / custom systems.
+  termsOfService: https://formlabs.com/terms-of-service/
+  contact:
+    name: Formlabs Developer Support
+    url: https://support.formlabs.com/s/topic/Developer-Portal
+  version: '1.0'
+servers:
+- url: https://api.formlabs.com/developer/v1
+  description: Formlabs Web API (Dashboard Developer API)
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: Groups
+paths:
+  /groups/:
+    get:
+      operationId: listGroups
+      tags:
+      - Groups
+      summary: List printer groups
+      description: List all printer groups the authenticated account can access.
+      responses:
+        '200':
+          description: A list of printer groups.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupList'
+    post:
+      operationId: createGroup
+      tags:
+      - Groups
+      summary: Create a printer group
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupWrite'
+      responses:
+        '201':
+          description: The created group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+  /groups/{group_id}/:
+    patch:
+      operationId: updateGroup
+      tags:
+      - Groups
+      summary: Update a printer group
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupWrite'
+      responses:
+        '200':
+          description: The updated group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+    delete:
+      operationId: deleteGroup
+      tags:
+      - Groups
+      summary: Delete a printer group
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: The group was deleted.
+  /groups/bulk-add-printers/:
+    post:
+      operationId: bulkAddPrintersToGroup
+      tags:
+      - Groups
+      summary: Move printers into a group
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group:
+                  type: string
+                printers:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Printers were moved to the group.
+  /groups/{group_id}/members/:
+    post:
+      operationId: inviteGroupMember
+      tags:
+      - Groups
+      summary: Invite a user to a group
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupMemberWrite'
+      responses:
+        '201':
+          description: The user was invited.
+    put:
+      operationId: updateGroupMember
+      tags:
+      - Groups
+      summary: Update a group membership
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupMemberWrite'
+      responses:
+        '200':
+          description: The membership was updated.
+    delete:
+      operationId: removeGroupMember
+      tags:
+      - Groups
+      summary: Remove a group member
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: query
+        schema:
+          type: string
+      responses:
+        '204':
+          description: The member was removed.
+  /groups/{group_id}/queue/:
+    get:
+      operationId: listGroupQueue
+      tags:
+      - Groups
+      summary: List group queue items
+      description: List queued print jobs for a printer group.
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of queue items for the group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueueItemList'
+components:
+  schemas:
+    QueueItem:
+      type: object
+      properties:
+        guid:
+          type: string
+        name:
+          type: string
+        material:
+          type: string
+        position:
+          type: integer
+        status:
+          type: string
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMember'
+    QueueItemList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueueItem'
+    GroupWrite:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+    GroupMember:
+      type: object
+      properties:
+        user:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+    GroupMemberWrite:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+        role:
+          type: string
+    GroupList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      description: OAuth 2.0 Client Credentials flow. Exchange a client_id and client_secret at the token endpoint for a Bearer access token valid for 24 hours, scoped to developer-api. The Formlabs identity provider also supports OpenID Connect for interactive sign-in via PreForm / Local API.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.formlabs.com/developer/v1/o/token/
+          scopes:
+            developer-api: Access the Formlabs Dashboard Developer API

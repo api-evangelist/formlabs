@@ -1,0 +1,188 @@
+openapi: 3.0.1
+info:
+  title: Formlabs Web Consumables Prints API
+  description: The Formlabs Web API (Dashboard Developer API) provides remote monitoring and management of Internet-connected Formlabs products registered to a Dashboard account. It exposes read access to printers, prints, resin tanks, and cartridges, an event history feed, and full CRUD management of printer groups and their print queues. Typical use cases include automated reports on printer and material usage, job history exports, and integration of printer status into ERP / MES / custom systems.
+  termsOfService: https://formlabs.com/terms-of-service/
+  contact:
+    name: Formlabs Developer Support
+    url: https://support.formlabs.com/s/topic/Developer-Portal
+  version: '1.0'
+servers:
+- url: https://api.formlabs.com/developer/v1
+  description: Formlabs Web API (Dashboard Developer API)
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: Prints
+paths:
+  /printers/{printer_serial}/prints/:
+    get:
+      operationId: listPrinterPrints
+      tags:
+      - Prints
+      summary: List prints for a printer
+      description: List prints run on a specific printer.
+      parameters:
+      - name: printer_serial
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A paginated list of prints for the printer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrintList'
+  /prints/:
+    get:
+      operationId: listPrints
+      tags:
+      - Prints
+      summary: List and search prints
+      description: List and search all prints across the account, with filtering by date, material, name, status, machine type, and printer.
+      parameters:
+      - name: date
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: date__gt
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: date__lt
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: material
+        in: query
+        schema:
+          type: string
+      - name: name
+        in: query
+        schema:
+          type: string
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - QUEUED
+          - PREPRINT
+          - PRINTING
+          - PAUSING
+          - PAUSED
+          - FINISHED
+          - ABORTING
+          - ABORTED
+          - ERROR
+          - WAITING_FOR_RESOLUTION
+          - PREHEAT
+          - PRECOAT
+          - POSTCOAT
+      - name: machine_type_id
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: printer
+        in: query
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A paginated list of prints.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrintList'
+components:
+  schemas:
+    Print:
+      type: object
+      properties:
+        guid:
+          type: string
+        name:
+          type: string
+        printer:
+          type: string
+        status:
+          type: string
+        material:
+          type: string
+        layer_thickness_mm:
+          type: number
+        volume_ml:
+          type: number
+        layer_count:
+          type: integer
+        current_layer:
+          type: integer
+        z_height_offset_mm:
+          type: number
+        print_started_at:
+          type: string
+          format: date-time
+        print_finished_at:
+          type: string
+          format: date-time
+        estimated_duration_ms:
+          type: integer
+        elapsed_duration_ms:
+          type: integer
+        cartridge:
+          type: string
+        tank:
+          type: string
+        user:
+          type: string
+        thumbnail:
+          type: string
+        group:
+          type: string
+    PrintList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Print'
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      description: OAuth 2.0 Client Credentials flow. Exchange a client_id and client_secret at the token endpoint for a Bearer access token valid for 24 hours, scoped to developer-api. The Formlabs identity provider also supports OpenID Connect for interactive sign-in via PreForm / Local API.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.formlabs.com/developer/v1/o/token/
+          scopes:
+            developer-api: Access the Formlabs Dashboard Developer API
