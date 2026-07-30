@@ -8,7 +8,20 @@ description: Formlabs designs and manufactures desktop and industrial 3D printer
   management of Internet-connected printers, prints, consumables, events, and printer
   groups, plus a Local API (PreFormServer) for local-network job preparation and
   printer control.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/formlabs.png
 tags:
 - 3D Printing
 - Additive Manufacturing
@@ -20,122 +33,6 @@ created: '2026-06-20'
 modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
-- aid: formlabs:formlabs-web-api-printers
-  name: Formlabs Web API (Dashboard) - Printers
-  tags:
-  - Printers
-  - Fleet
-  - Monitoring
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
-  baseURL: https://api.formlabs.com/developer/v1
-  properties:
-  - url: https://support.formlabs.com/s/topic/Developer-Portal
-    type: Documentation
-  - url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
-    type: APIReference
-  - url: openapi/formlabs-openapi.yml
-    type: OpenAPI
-  - url: collections/formlabs.postman_collection.json
-    type: PostmanCollection
-  - url: collections/formlabs.opencollection.json
-    type: OpenCollection
-  description: Remote listing and retrieval of Formlabs printers registered to a
-    Dashboard account, including status, firmware, machine type, and group
-    membership, for fleet monitoring and ERP/MES integration.
-- aid: formlabs:formlabs-web-api-prints
-  name: Formlabs Web API (Dashboard) - Prints
-  tags:
-  - Prints
-  - Jobs
-  - History
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
-  baseURL: https://api.formlabs.com/developer/v1
-  properties:
-  - url: https://support.formlabs.com/s/topic/Developer-Portal
-    type: Documentation
-  - url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
-    type: APIReference
-  - url: openapi/formlabs-openapi.yml
-    type: OpenAPI
-  - url: collections/formlabs.postman_collection.json
-    type: PostmanCollection
-  - url: collections/formlabs.opencollection.json
-    type: OpenCollection
-  description: List and search prints across the account or by printer, filterable
-    by date, material, name, status, and machine type, with full job metadata such
-    as volume, layer count, duration, material, and consumables used.
-- aid: formlabs:formlabs-web-api-consumables
-  name: Formlabs Web API (Dashboard) - Consumables
-  tags:
-  - Tanks
-  - Cartridges
-  - Materials
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
-  baseURL: https://api.formlabs.com/developer/v1
-  properties:
-  - url: https://support.formlabs.com/s/topic/Developer-Portal
-    type: Documentation
-  - url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
-    type: APIReference
-  - url: openapi/formlabs-openapi.yml
-    type: OpenAPI
-  - url: collections/formlabs.postman_collection.json
-    type: PostmanCollection
-  - url: collections/formlabs.opencollection.json
-    type: OpenCollection
-  description: List resin tanks and cartridges associated with the account,
-    including material type, dispensed and remaining volume, layer/print-time
-    usage, and the printer each consumable is connected to.
-- aid: formlabs:formlabs-web-api-events
-  name: Formlabs Web API (Dashboard) - Events
-  tags:
-  - Events
-  - Notifications
-  - Polling
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
-  baseURL: https://api.formlabs.com/developer/v1
-  properties:
-  - url: https://support.formlabs.com/s/topic/Developer-Portal
-    type: Documentation
-  - url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
-    type: APIReference
-  - url: openapi/formlabs-openapi.yml
-    type: OpenAPI
-  - url: collections/formlabs.postman_collection.json
-    type: PostmanCollection
-  - url: collections/formlabs.opencollection.json
-    type: OpenCollection
-  description: Poll the account event history (print started/finished, errors,
-    consumable changes) filterable by printer, cartridge, tank, print run, type,
-    and date range. Delivered as a paginated REST feed; no push webhooks are
-    documented.
-- aid: formlabs:formlabs-web-api-groups
-  name: Formlabs Web API (Dashboard) - Groups
-  tags:
-  - Groups
-  - Queue
-  - Access Control
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
-  baseURL: https://api.formlabs.com/developer/v1
-  properties:
-  - url: https://support.formlabs.com/s/topic/Developer-Portal
-    type: Documentation
-  - url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
-    type: APIReference
-  - url: openapi/formlabs-openapi.yml
-    type: OpenAPI
-  - url: collections/formlabs.postman_collection.json
-    type: PostmanCollection
-  - url: collections/formlabs.opencollection.json
-    type: OpenCollection
-  description: Create, update, and delete printer groups, move printers between
-    groups, manage group memberships and invitations, and list each group's print
-    queue.
 - aid: formlabs:formlabs-local-api
   name: Formlabs Local API (PreFormServer)
   tags:
@@ -152,10 +49,100 @@ apis:
     type: APIReference
   - url: https://github.com/Formlabs/formlabs-api-python
     type: SDKs
-  description: Local-network REST API served by the PreFormServer application for
-    automating job preparation (import, auto-orient, auto-support, auto-layout,
-    hollow, label), scene management, print-time estimation, and sending jobs to
-    a printer or Fleet Control without launching the PreForm GUI.
+  description: >-
+    Local-network REST API served by the PreFormServer application for automating job preparation (import,
+    auto-orient, auto-support, auto-layout, hollow, label), scene management, print-time estimation, and
+    sending jobs to a printer or Fleet Control without launching the PreForm GUI.
+- aid: formlabs:formlabs-consumables-api
+  name: Formlabs Consumables API
+  description: The Consumables API from Formlabs — 2 operation(s) for consumables.
+  humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
+  baseURL: https://api.formlabs.com/developer/v1
+  tags:
+  - Consumables
+  properties:
+  - type: OpenAPI
+    url: openapi/formlabs-consumables-api-openapi.yml
+  - type: Documentation
+    url: https://support.formlabs.com/s/topic/Developer-Portal
+  - type: APIReference
+    url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
+  - type: PostmanCollection
+    url: collections/formlabs.postman_collection.json
+  - type: OpenCollection
+    url: collections/formlabs.opencollection.json
+- aid: formlabs:formlabs-events-api
+  name: Formlabs Events API
+  description: The Events API from Formlabs — 1 operation(s) for events.
+  humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
+  baseURL: https://api.formlabs.com/developer/v1
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/formlabs-events-api-openapi.yml
+  - type: Documentation
+    url: https://support.formlabs.com/s/topic/Developer-Portal
+  - type: APIReference
+    url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
+  - type: PostmanCollection
+    url: collections/formlabs.postman_collection.json
+  - type: OpenCollection
+    url: collections/formlabs.opencollection.json
+- aid: formlabs:formlabs-groups-api
+  name: Formlabs Groups API
+  description: The Groups API from Formlabs — 5 operation(s) for groups.
+  humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
+  baseURL: https://api.formlabs.com/developer/v1
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/formlabs-groups-api-openapi.yml
+  - type: Documentation
+    url: https://support.formlabs.com/s/topic/Developer-Portal
+  - type: APIReference
+    url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
+  - type: PostmanCollection
+    url: collections/formlabs.postman_collection.json
+  - type: OpenCollection
+    url: collections/formlabs.opencollection.json
+- aid: formlabs:formlabs-printers-api
+  name: Formlabs Printers API
+  description: The Printers API from Formlabs — 2 operation(s) for printers.
+  humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
+  baseURL: https://api.formlabs.com/developer/v1
+  tags:
+  - Printers
+  properties:
+  - type: OpenAPI
+    url: openapi/formlabs-printers-api-openapi.yml
+  - type: Documentation
+    url: https://support.formlabs.com/s/topic/Developer-Portal
+  - type: APIReference
+    url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
+  - type: PostmanCollection
+    url: collections/formlabs.postman_collection.json
+  - type: OpenCollection
+    url: collections/formlabs.opencollection.json
+- aid: formlabs:formlabs-prints-api
+  name: Formlabs Prints API
+  description: The Prints API from Formlabs — 2 operation(s) for prints.
+  humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
+  baseURL: https://api.formlabs.com/developer/v1
+  tags:
+  - Prints
+  properties:
+  - type: OpenAPI
+    url: openapi/formlabs-prints-api-openapi.yml
+  - type: Documentation
+    url: https://support.formlabs.com/s/topic/Developer-Portal
+  - type: APIReference
+    url: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
+  - type: PostmanCollection
+    url: collections/formlabs.postman_collection.json
+  - type: OpenCollection
+    url: collections/formlabs.opencollection.json
 common:
 - type: AgenticAccess
   url: agentic-access/formlabs-agentic-access.yml
