@@ -1,0 +1,22 @@
+{
+  "provider": "formlabs",
+  "sources": [
+    "formlabs-consumables-api-openapi.yml",
+    "formlabs-events-api-openapi.yml",
+    "formlabs-groups-api-openapi.yml",
+    "formlabs-printers-api-openapi.yml",
+    "formlabs-prints-api-openapi.yml"
+  ],
+  "outputs": [
+    "formlabs-consumables-api-openapi.yml",
+    "formlabs-events-api-openapi.yml",
+    "formlabs-groups-api-openapi.yml",
+    "formlabs-printers-api-openapi.yml",
+    "formlabs-prints-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
