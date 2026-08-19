@@ -1,0 +1,212 @@
+{
+  "item": [
+    {
+      "id": "402f3374-516f-4267-b0c5-744d2deb2537",
+      "name": "Events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0be89432-d465-4b79-a7cf-80c438cb5bc7",
+          "name": "List events",
+          "request": {
+            "name": "List events",
+            "description": {
+              "content": "List the event history (print started/finished, errors, consumable changes, etc.) for the account. This is a polling endpoint; the Formlabs Web API does not publish push webhooks. Filter by printer, cartridge, tank, print run, type, and date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "printer",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cartridge",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tank",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "print_run",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe5e5ec4-4701-4f41-befe-caafcf8808de",
+              "name": "A paginated list of events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "printer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cartridge",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tank",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "print_run",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date__gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date__lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 6219,\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"printer\": \"string\",\n      \"created_at\": \"1982-09-11T06:54:36.294Z\",\n      \"type\": \"string\",\n      \"type_label\": \"string\",\n      \"action\": \"string\",\n      \"message\": \"string\",\n      \"print_run\": \"string\",\n      \"tank\": \"string\",\n      \"cartridge\": \"string\",\n      \"read\": true,\n      \"group\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"printer\": \"string\",\n      \"created_at\": \"1958-08-05T01:14:41.698Z\",\n      \"type\": \"string\",\n      \"type_label\": \"string\",\n      \"action\": \"string\",\n      \"message\": \"string\",\n      \"print_run\": \"string\",\n      \"tank\": \"string\",\n      \"cartridge\": \"string\",\n      \"read\": false,\n      \"group\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.formlabs.com/developer/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "developer-api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.formlabs.com/developer/v1/o/token/"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d47c82ed-1c77-4729-af31-e45cfcb2c67a",
+    "name": "Formlabs Web Consumables Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Formlabs Web API (Dashboard Developer API) provides remote monitoring and management of Internet-connected Formlabs products registered to a Dashboard account. It exposes read access to printers, prints, resin tanks, and cartridges, an event history feed, and full CRUD management of printer groups and their print queues. Typical use cases include automated reports on printer and material usage, job history exports, and integration of printer status into ERP / MES / custom systems.\n\nContact Support:\n Name: Formlabs Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

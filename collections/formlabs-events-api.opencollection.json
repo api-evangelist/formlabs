@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Formlabs Web Consumables Events API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.formlabs.com/developer/v1/o/token/",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.formlabs.com/developer/v1/events/",
+            "params": [
+              {
+                "name": "printer",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cartridge",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tank",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "print_run",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List the event history (print started/finished, errors, consumable changes, etc.) for the account. This is a polling endpoint; the Formlabs Web API does not publish push webhooks. Filter by printer, cartridge, tank, print run, type, and date range."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

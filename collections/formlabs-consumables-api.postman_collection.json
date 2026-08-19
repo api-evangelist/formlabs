@@ -1,0 +1,209 @@
+{
+  "item": [
+    {
+      "id": "eeb0bbed-e0ef-4bea-b6df-f1df6e29d36d",
+      "name": "Consumables",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "160e95fe-b2a5-463d-b7bf-e56fa58351d5",
+          "name": "List resin tanks",
+          "request": {
+            "name": "List resin tanks",
+            "description": {
+              "content": "List all resin tanks associated with the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tanks",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf451352-01d0-4e2f-95a9-f62c069ffa6a",
+              "name": "A paginated list of resin tanks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tanks",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 4681,\n  \"results\": [\n    {\n      \"serial\": \"string\",\n      \"material\": \"string\",\n      \"total_print_time_ms\": 8868,\n      \"layer_count\": 1561,\n      \"connected_printer\": \"string\"\n    },\n    {\n      \"serial\": \"string\",\n      \"material\": \"string\",\n      \"total_print_time_ms\": 7449,\n      \"layer_count\": 2016,\n      \"connected_printer\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bc8d4d7-b3ae-4719-80f4-0109a3a40d41",
+          "name": "List resin cartridges",
+          "request": {
+            "name": "List resin cartridges",
+            "description": {
+              "content": "List all resin cartridges associated with the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cartridges",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e02b594-93e2-4621-a5db-91c059f9eddd",
+              "name": "A paginated list of resin cartridges.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cartridges",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 6171,\n  \"results\": [\n    {\n      \"serial\": \"string\",\n      \"material\": \"string\",\n      \"initial_volume_ml\": 9625.89967408983,\n      \"volume_dispensed_ml\": 1632.9687106696379,\n      \"is_empty\": true,\n      \"connected_printer\": \"string\"\n    },\n    {\n      \"serial\": \"string\",\n      \"material\": \"string\",\n      \"initial_volume_ml\": 8984.569126573922,\n      \"volume_dispensed_ml\": 1962.7210401721495,\n      \"is_empty\": true,\n      \"connected_printer\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.formlabs.com/developer/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "developer-api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.formlabs.com/developer/v1/o/token/"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1f3947e8-707c-4df6-8c87-4a1cd3a57d21",
+    "name": "Formlabs Web Consumables API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Formlabs Web API (Dashboard Developer API) provides remote monitoring and management of Internet-connected Formlabs products registered to a Dashboard account. It exposes read access to printers, prints, resin tanks, and cartridges, an event history feed, and full CRUD management of printer groups and their print queues. Typical use cases include automated reports on printer and material usage, job history exports, and integration of printer status into ERP / MES / custom systems.\n\nContact Support:\n Name: Formlabs Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

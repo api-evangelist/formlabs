@@ -1,0 +1,247 @@
+{
+  "item": [
+    {
+      "id": "3fe16044-6337-4837-9a4d-8ee1a65d32c7",
+      "name": "Printers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4fc45470-a7a7-4c91-a691-401414eb079f",
+          "name": "List printers",
+          "request": {
+            "name": "List printers",
+            "description": {
+              "content": "List all printers registered to the authenticated Dashboard account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "printers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a6f1670-3caf-4cc9-8cf4-67efb10a7622",
+              "name": "A paginated list of printers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "printers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 6094,\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"results\": [\n    {\n      \"serial\": \"string\",\n      \"alias\": \"string\",\n      \"machine_type_id\": \"string\",\n      \"printer_status\": {\n        \"status\": \"string\",\n        \"last_pinged_at\": \"1956-10-24T22:10:11.605Z\"\n      },\n      \"firmware_version\": \"string\",\n      \"location\": \"string\",\n      \"group\": \"string\"\n    },\n    {\n      \"serial\": \"string\",\n      \"alias\": \"string\",\n      \"machine_type_id\": \"string\",\n      \"printer_status\": {\n        \"status\": \"string\",\n        \"last_pinged_at\": \"1953-04-04T08:56:46.790Z\"\n      },\n      \"firmware_version\": \"string\",\n      \"location\": \"string\",\n      \"group\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c422d57-0b63-4018-8d7b-e8917c893f4f",
+          "name": "Retrieve a printer",
+          "request": {
+            "name": "Retrieve a printer",
+            "description": {
+              "content": "Retrieve a single printer by its serial number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "printers",
+                ":printer_serial",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "printer_serial",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa66c21c-0887-4ce2-be58-a013b10c71dd",
+              "name": "The requested printer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "printers",
+                    ":printer_serial",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "printer_serial",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"serial\": \"string\",\n  \"alias\": \"string\",\n  \"machine_type_id\": \"string\",\n  \"printer_status\": {\n    \"status\": \"string\",\n    \"last_pinged_at\": \"1976-12-26T09:29:09.604Z\"\n  },\n  \"firmware_version\": \"string\",\n  \"location\": \"string\",\n  \"group\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.formlabs.com/developer/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "developer-api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.formlabs.com/developer/v1/o/token/"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "410174d4-168d-4815-be4a-fe0468fb2f43",
+    "name": "Formlabs Web Consumables Printers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Formlabs Web API (Dashboard Developer API) provides remote monitoring and management of Internet-connected Formlabs products registered to a Dashboard account. It exposes read access to printers, prints, resin tanks, and cartridges, an event history feed, and full CRUD management of printer groups and their print queues. Typical use cases include automated reports on printer and material usage, job history exports, and integration of printer status into ERP / MES / custom systems.\n\nContact Support:\n Name: Formlabs Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

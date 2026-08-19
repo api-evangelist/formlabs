@@ -1,0 +1,350 @@
+{
+  "item": [
+    {
+      "id": "827de645-34a9-499b-9b8b-2a00446e6909",
+      "name": "Prints",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a5b05176-2b67-4133-b416-c5ec407ceaa7",
+          "name": "List prints for a printer",
+          "request": {
+            "name": "List prints for a printer",
+            "description": {
+              "content": "List prints run on a specific printer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "printers",
+                ":printer_serial",
+                "prints",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "printer_serial",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7453282e-a0f7-4bf0-8ed6-d2f255097376",
+              "name": "A paginated list of prints for the printer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "printers",
+                    ":printer_serial",
+                    "prints",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "printer_serial",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 6357,\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"results\": [\n    {\n      \"guid\": \"string\",\n      \"name\": \"string\",\n      \"printer\": \"string\",\n      \"status\": \"string\",\n      \"material\": \"string\",\n      \"layer_thickness_mm\": 6775.480452839712,\n      \"volume_ml\": 4754.77992922171,\n      \"layer_count\": 3852,\n      \"current_layer\": 2167,\n      \"z_height_offset_mm\": 3582.662691760603,\n      \"print_started_at\": \"2018-03-25T02:19:39.808Z\",\n      \"print_finished_at\": \"1980-09-08T07:33:24.284Z\",\n      \"estimated_duration_ms\": 967,\n      \"elapsed_duration_ms\": 5912,\n      \"cartridge\": \"string\",\n      \"tank\": \"string\",\n      \"user\": \"string\",\n      \"thumbnail\": \"string\",\n      \"group\": \"string\"\n    },\n    {\n      \"guid\": \"string\",\n      \"name\": \"string\",\n      \"printer\": \"string\",\n      \"status\": \"string\",\n      \"material\": \"string\",\n      \"layer_thickness_mm\": 4412.450251048736,\n      \"volume_ml\": 3745.412108722814,\n      \"layer_count\": 6894,\n      \"current_layer\": 4479,\n      \"z_height_offset_mm\": 9708.237457352854,\n      \"print_started_at\": \"2014-10-23T10:33:41.199Z\",\n      \"print_finished_at\": \"1974-08-06T04:46:17.257Z\",\n      \"estimated_duration_ms\": 6363,\n      \"elapsed_duration_ms\": 6160,\n      \"cartridge\": \"string\",\n      \"tank\": \"string\",\n      \"user\": \"string\",\n      \"thumbnail\": \"string\",\n      \"group\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1829b87f-8300-4780-ab95-bd6d05150b30",
+          "name": "List and search prints",
+          "request": {
+            "name": "List and search prints",
+            "description": {
+              "content": "List and search all prints across the account, with filtering by date, material, name, status, machine type, and printer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "prints",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "material",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "machine_type_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "machine_type_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "printer",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1eb3b91-8d24-4e92-b75e-27ed221448a3",
+              "name": "A paginated list of prints.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prints",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date__gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date__lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "material",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "machine_type_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "machine_type_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "printer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 3028,\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"results\": [\n    {\n      \"guid\": \"string\",\n      \"name\": \"string\",\n      \"printer\": \"string\",\n      \"status\": \"string\",\n      \"material\": \"string\",\n      \"layer_thickness_mm\": 687.4291045652848,\n      \"volume_ml\": 1878.0479003012174,\n      \"layer_count\": 8457,\n      \"current_layer\": 1255,\n      \"z_height_offset_mm\": 7932.022852851564,\n      \"print_started_at\": \"1996-06-25T04:37:02.774Z\",\n      \"print_finished_at\": \"2011-05-10T07:38:17.648Z\",\n      \"estimated_duration_ms\": 3465,\n      \"elapsed_duration_ms\": 8759,\n      \"cartridge\": \"string\",\n      \"tank\": \"string\",\n      \"user\": \"string\",\n      \"thumbnail\": \"string\",\n      \"group\": \"string\"\n    },\n    {\n      \"guid\": \"string\",\n      \"name\": \"string\",\n      \"printer\": \"string\",\n      \"status\": \"string\",\n      \"material\": \"string\",\n      \"layer_thickness_mm\": 9437.06020442356,\n      \"volume_ml\": 5522.484594623266,\n      \"layer_count\": 3127,\n      \"current_layer\": 231,\n      \"z_height_offset_mm\": 6055.840261968007,\n      \"print_started_at\": \"2000-01-03T22:05:57.770Z\",\n      \"print_finished_at\": \"1968-11-24T22:00:57.690Z\",\n      \"estimated_duration_ms\": 4850,\n      \"elapsed_duration_ms\": 5339,\n      \"cartridge\": \"string\",\n      \"tank\": \"string\",\n      \"user\": \"string\",\n      \"thumbnail\": \"string\",\n      \"group\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.formlabs.com/developer/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "developer-api"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.formlabs.com/developer/v1/o/token/"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5560cca9-86e7-49ea-ba6d-29584734cd2a",
+    "name": "Formlabs Web Consumables Prints API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Formlabs Web API (Dashboard Developer API) provides remote monitoring and management of Internet-connected Formlabs products registered to a Dashboard account. It exposes read access to printers, prints, resin tanks, and cartridges, an event history feed, and full CRUD management of printer groups and their print queues. Typical use cases include automated reports on printer and material usage, job history exports, and integration of printer status into ERP / MES / custom systems.\n\nContact Support:\n Name: Formlabs Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

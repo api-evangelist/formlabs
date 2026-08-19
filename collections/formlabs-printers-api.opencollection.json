@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Formlabs Web Consumables Printers API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.formlabs.com/developer/v1/o/token/",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Printers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List printers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.formlabs.com/developer/v1/printers/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all printers registered to the authenticated Dashboard account."
+        },
+        {
+          "info": {
+            "name": "Retrieve a printer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.formlabs.com/developer/v1/printers/:printer_serial/",
+            "params": [
+              {
+                "name": "printer_serial",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single printer by its serial number."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
