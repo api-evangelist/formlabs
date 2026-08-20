@@ -77,6 +77,8 @@ apis:
   humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
   baseURL: https://api.formlabs.com/developer/v1
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -95,6 +97,8 @@ apis:
   humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
   baseURL: https://api.formlabs.com/developer/v1
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
