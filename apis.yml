@@ -40,6 +40,13 @@ tags:
 - SLA
 - SLS
 - Hardware
+- Dashboards
+tags_raw:
+- 3D Printing
+- Additive Manufacturing
+- SLA
+- SLS
+- Hardware
 - Dashboard
 created: '2026-06-20'
 modified: '2026-06-20'
@@ -147,6 +154,8 @@ apis:
   humanURL: https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html
   baseURL: https://api.formlabs.com/developer/v1
   tags:
+  - Print
+  tags_raw:
   - Prints
   properties:
   - type: OpenAPI
