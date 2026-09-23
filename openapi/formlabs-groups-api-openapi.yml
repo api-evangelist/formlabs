@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Formlabs Web Consumables Groups API
+  title: Formlabs Web Groups API
   description: The Formlabs Web API (Dashboard Developer API) provides remote monitoring and management of Internet-connected Formlabs products registered to a Dashboard account. It exposes read access to printers, prints, resin tanks, and cartridges, an event history feed, and full CRUD management of printer groups and their print queues. Typical use cases include automated reports on printer and material usage, job history exports, and integration of printer status into ERP / MES / custom systems.
   termsOfService: https://formlabs.com/terms-of-service/
   contact:
@@ -189,6 +189,31 @@ paths:
                 $ref: '#/components/schemas/QueueItemList'
 components:
   schemas:
+    GroupList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    GroupWrite:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+    QueueItemList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueueItem'
     QueueItem:
       type: object
       properties:
@@ -202,6 +227,15 @@ components:
           type: integer
         status:
           type: string
+    GroupMember:
+      type: object
+      properties:
+        user:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
     Group:
       type: object
       properties:
@@ -213,31 +247,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupMember'
-    QueueItemList:
-      type: object
-      properties:
-        count:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/QueueItem'
-    GroupWrite:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-    GroupMember:
-      type: object
-      properties:
-        user:
-          type: string
-        email:
-          type: string
-        role:
-          type: string
     GroupMemberWrite:
       type: object
       required:
@@ -247,15 +256,6 @@ components:
           type: string
         role:
           type: string
-    GroupList:
-      type: object
-      properties:
-        count:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

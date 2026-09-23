@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Formlabs Web Consumables Printers API
+  title: Formlabs Web Printers API
   description: The Formlabs Web API (Dashboard Developer API) provides remote monitoring and management of Internet-connected Formlabs products registered to a Dashboard account. It exposes read access to printers, prints, resin tanks, and cartridges, an event history feed, and full CRUD management of printer groups and their print queues. Typical use cases include automated reports on printer and material usage, job history exports, and integration of printer status into ERP / MES / custom systems.
   termsOfService: https://formlabs.com/terms-of-service/
   contact:
@@ -60,6 +60,23 @@ paths:
                 $ref: '#/components/schemas/Printer'
 components:
   schemas:
+    PrinterList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Printer'
     Printer:
       type: object
       properties:
@@ -83,21 +100,6 @@ components:
           type: string
         group:
           type: string
-    PrinterList:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type: string
-          nullable: true
-        previous:
-          type: string
-          nullable: true
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Printer'
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2
