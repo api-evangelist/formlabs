@@ -45,6 +45,15 @@ paths:
                 $ref: '#/components/schemas/CartridgeList'
 components:
   schemas:
+    TankList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tank'
     Cartridge:
       type: object
       properties:
@@ -60,24 +69,6 @@ components:
           type: boolean
         connected_printer:
           type: string
-    CartridgeList:
-      type: object
-      properties:
-        count:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cartridge'
-    TankList:
-      type: object
-      properties:
-        count:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tank'
     Tank:
       type: object
       properties:
@@ -91,6 +82,15 @@ components:
           type: integer
         connected_printer:
           type: string
+    CartridgeList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cartridge'
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

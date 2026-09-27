@@ -189,31 +189,6 @@ paths:
                 $ref: '#/components/schemas/QueueItemList'
 components:
   schemas:
-    GroupList:
-      type: object
-      properties:
-        count:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-    GroupWrite:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-    QueueItemList:
-      type: object
-      properties:
-        count:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/QueueItem'
     QueueItem:
       type: object
       properties:
@@ -227,15 +202,15 @@ components:
           type: integer
         status:
           type: string
-    GroupMember:
+    GroupList:
       type: object
       properties:
-        user:
-          type: string
-        email:
-          type: string
-        role:
-          type: string
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
     Group:
       type: object
       properties:
@@ -247,6 +222,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupMember'
+    QueueItemList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueueItem'
+    GroupMember:
+      type: object
+      properties:
+        user:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
     GroupMemberWrite:
       type: object
       required:
@@ -255,6 +248,13 @@ components:
         email:
           type: string
         role:
+          type: string
+    GroupWrite:
+      type: object
+      required:
+      - name
+      properties:
+        name:
           type: string
   securitySchemes:
     OAuth2ClientCredentials:

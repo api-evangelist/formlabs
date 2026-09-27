@@ -119,23 +119,6 @@ paths:
                 $ref: '#/components/schemas/PrintList'
 components:
   schemas:
-    PrintList:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Print'
     Print:
       type: object
       properties:
@@ -179,6 +162,23 @@ components:
           type: string
         group:
           type: string
+    PrintList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Print'
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2
