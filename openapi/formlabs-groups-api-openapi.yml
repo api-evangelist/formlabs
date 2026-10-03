@@ -189,6 +189,24 @@ paths:
                 $ref: '#/components/schemas/QueueItemList'
 components:
   schemas:
+    GroupMemberWrite:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+        role:
+          type: string
+    QueueItemList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueueItem'
     QueueItem:
       type: object
       properties:
@@ -202,49 +220,11 @@ components:
           type: integer
         status:
           type: string
-    GroupList:
-      type: object
-      properties:
-        count:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-    Group:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupMember'
-    QueueItemList:
-      type: object
-      properties:
-        count:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/QueueItem'
     GroupMember:
       type: object
       properties:
         user:
           type: string
-        email:
-          type: string
-        role:
-          type: string
-    GroupMemberWrite:
-      type: object
-      required:
-      - email
-      properties:
         email:
           type: string
         role:
@@ -256,6 +236,26 @@ components:
       properties:
         name:
           type: string
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMember'
+    GroupList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2
