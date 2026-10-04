@@ -60,6 +60,23 @@ paths:
                 $ref: '#/components/schemas/Printer'
 components:
   schemas:
+    PrinterList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Printer'
     Printer:
       type: object
       properties:
@@ -83,23 +100,6 @@ components:
           type: string
         group:
           type: string
-    PrinterList:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Printer'
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

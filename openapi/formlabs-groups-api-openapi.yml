@@ -189,16 +189,7 @@ paths:
                 $ref: '#/components/schemas/QueueItemList'
 components:
   schemas:
-    GroupMemberWrite:
-      type: object
-      required:
-      - email
-      properties:
-        email:
-          type: string
-        role:
-          type: string
-    QueueItemList:
+    GroupList:
       type: object
       properties:
         count:
@@ -206,7 +197,14 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/QueueItem'
+            $ref: '#/components/schemas/Group'
+    GroupWrite:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
     QueueItem:
       type: object
       properties:
@@ -229,13 +227,6 @@ components:
           type: string
         role:
           type: string
-    GroupWrite:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
     Group:
       type: object
       properties:
@@ -247,7 +238,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupMember'
-    GroupList:
+    QueueItemList:
       type: object
       properties:
         count:
@@ -255,7 +246,16 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Group'
+            $ref: '#/components/schemas/QueueItem'
+    GroupMemberWrite:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+        role:
+          type: string
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2
