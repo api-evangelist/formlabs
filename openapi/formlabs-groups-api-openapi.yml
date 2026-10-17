@@ -189,6 +189,22 @@ paths:
                 $ref: '#/components/schemas/QueueItemList'
 components:
   schemas:
+    GroupMember:
+      type: object
+      properties:
+        user:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+    GroupWrite:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
     GroupList:
       type: object
       properties:
@@ -198,13 +214,35 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Group'
-    GroupWrite:
+    GroupMemberWrite:
       type: object
       required:
-      - name
+      - email
       properties:
+        email:
+          type: string
+        role:
+          type: string
+    QueueItemList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueueItem'
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
         name:
           type: string
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMember'
     QueueItem:
       type: object
       properties:
@@ -217,44 +255,6 @@ components:
         position:
           type: integer
         status:
-          type: string
-    GroupMember:
-      type: object
-      properties:
-        user:
-          type: string
-        email:
-          type: string
-        role:
-          type: string
-    Group:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupMember'
-    QueueItemList:
-      type: object
-      properties:
-        count:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/QueueItem'
-    GroupMemberWrite:
-      type: object
-      required:
-      - email
-      properties:
-        email:
-          type: string
-        role:
           type: string
   securitySchemes:
     OAuth2ClientCredentials:

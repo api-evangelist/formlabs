@@ -70,6 +70,23 @@ paths:
                 $ref: '#/components/schemas/EventList'
 components:
   schemas:
+    EventList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
     Event:
       type: object
       properties:
@@ -98,23 +115,6 @@ components:
           type: boolean
         group:
           type: string
-    EventList:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

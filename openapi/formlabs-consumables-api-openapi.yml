@@ -45,21 +45,6 @@ paths:
                 $ref: '#/components/schemas/CartridgeList'
 components:
   schemas:
-    Cartridge:
-      type: object
-      properties:
-        serial:
-          type: string
-        material:
-          type: string
-        initial_volume_ml:
-          type: number
-        volume_dispensed_ml:
-          type: number
-        is_empty:
-          type: boolean
-        connected_printer:
-          type: string
     TankList:
       type: object
       properties:
@@ -89,6 +74,21 @@ components:
           type: integer
         layer_count:
           type: integer
+        connected_printer:
+          type: string
+    Cartridge:
+      type: object
+      properties:
+        serial:
+          type: string
+        material:
+          type: string
+        initial_volume_ml:
+          type: number
+        volume_dispensed_ml:
+          type: number
+        is_empty:
+          type: boolean
         connected_printer:
           type: string
   securitySchemes:
