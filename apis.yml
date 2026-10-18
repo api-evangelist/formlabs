@@ -36,7 +36,6 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/formlabs.png
 tags:
 - 3D Printing
-- Additive Manufacturing
 - SLA
 - SLS
 - Hardware
