@@ -1,4 +1,4 @@
-# Formlabs (formlabs)
+# Formlabs
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,160 +66,131 @@
 
 Formlabs designs and manufactures desktop and industrial 3D printers (SLA and SLS), materials, and software (PreForm, Dashboard). Its developer platform exposes the Formlabs Web API (Dashboard Developer API) for remote monitoring and management of Internet-connected printers, prints, consumables, events, and printer groups, plus a Local API (PreFormServer) for local-network job preparation and printer control.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/formlabs/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/formlabs/refs/heads/main/apis.yml)
+**Areas:** 3D Printing · SLA · SLS · Hardware · Dashboards
 
-## Tags
+## Formlabs on APIs.io
 
-- 3D Printing
-- Additive Manufacturing
-- SLA
-- SLS
-- Hardware
-- Dashboard
+Everything profiled for Formlabs is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/formlabs/](https://apis.io/providers/formlabs/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (6)
 
-- **Created:** 2026-06-20
-- **Modified:** 2026-06-20
+- [Formlabs Local API (PreFormServer)](https://apis.io/apis/formlabs/formlabs-local-api/) — Local-network REST API served by the PreFormServer application for automating job preparation (import, auto-orient, auto-support, auto-layout, hollow,…
+- [Formlabs Consumables API](https://apis.io/apis/formlabs/formlabs-consumables-api/) — The Consumables API from Formlabs — 2 operation(s) for consumables.
+- [Formlabs Events API](https://apis.io/apis/formlabs/formlabs-events-api/) — The Events API from Formlabs — 1 operation(s) for events.
+- [Formlabs Groups API](https://apis.io/apis/formlabs/formlabs-groups-api/) — The Groups API from Formlabs — 5 operation(s) for groups.
+- [Formlabs Printers API](https://apis.io/apis/formlabs/formlabs-printers-api/) — The Printers API from Formlabs — 2 operation(s) for printers.
+- [Formlabs Prints API](https://apis.io/apis/formlabs/formlabs-prints-api/) — The Prints API from Formlabs — 2 operation(s) for prints.
 
-## APIs
+### Published properties
 
-### Formlabs Web API (Dashboard) - Printers
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Remote listing and retrieval of Formlabs printers registered to a Dashboard account, including status, firmware, machine type, and group membership, for fleet monitoring and ERP/MES integration.
+#### Agentic access (1)
 
-- **Human URL:** [https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html](https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html)
-- **Base URL:** `https://api.formlabs.com/developer/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Formlabs Agentic Access](https://apis.io/agentic-access/formlabs/formlabs-agentic-access/)
 
-- Printers
-- Fleet
-- Monitoring
+#### Collections (6)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://support.formlabs.com/s/topic/Developer-Portal)
-- [API Reference](https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html)
-- [OpenAPI](openapi/formlabs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formlabs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formlabs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Formlabs Web API](https://apis.io/collections/formlabs/open-formlabs/)
+- [Formlabs Web Consumables API](https://apis.io/collections/formlabs/open-formlabs-consumables-api/)
+- [Formlabs Web Consumables Events API](https://apis.io/collections/formlabs/open-formlabs-events-api/)
+- [Formlabs Web Consumables Groups API](https://apis.io/collections/formlabs/open-formlabs-groups-api/)
+- [Formlabs Web Consumables Printers API](https://apis.io/collections/formlabs/open-formlabs-printers-api/)
+- [Formlabs Web Consumables Prints API](https://apis.io/collections/formlabs/open-formlabs-prints-api/)
 
-### Formlabs Web API (Dashboard) - Prints
+#### Security (2)
 
-List and search prints across the account or by printer, filterable by date, material, name, status, and machine type, with full job metadata such as volume, layer count, duration, material, and consumables used.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html](https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html)
-- **Base URL:** `https://api.formlabs.com/developer/v1`
+- [Formlabs Authentication](https://apis.io/security/formlabs/formlabs-authentication/)
+- [Formlabs Domain Security](https://apis.io/security/formlabs/formlabs-domain-security/)
 
-#### Tags
+#### OAuth scopes (1)
 
-- Prints
-- Jobs
-- History
+The permissions the API asks for.
 
-#### Properties
+- [Formlabs Scopes](https://apis.io/scopes/formlabs/formlabs-scopes/)
 
-- [Documentation](https://support.formlabs.com/s/topic/Developer-Portal)
-- [API Reference](https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html)
-- [OpenAPI](openapi/formlabs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formlabs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formlabs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Plans and pricing (1)
 
-### Formlabs Web API (Dashboard) - Consumables
+Published plans, tiers and prices.
 
-List resin tanks and cartridges associated with the account, including material type, dispensed and remaining volume, layer/print-time usage, and the printer each consumable is connected to.
+- [Formlabs Plans Pricing](https://apis.io/plans/formlabs/formlabs-plans-pricing/)
 
-- **Human URL:** [https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html](https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html)
-- **Base URL:** `https://api.formlabs.com/developer/v1`
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
-- Tanks
-- Cartridges
-- Materials
+- [Formlabs Rate Limits](https://apis.io/rate-limits/formlabs/formlabs-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://support.formlabs.com/s/topic/Developer-Portal)
-- [API Reference](https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html)
-- [OpenAPI](openapi/formlabs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formlabs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formlabs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+What the API costs to run, by operation.
 
-### Formlabs Web API (Dashboard) - Events
+- [Formlabs Finops](https://apis.io/finops/formlabs/formlabs-finops/)
 
-Poll the account event history (print started/finished, errors, consumable changes) filterable by printer, cartridge, tank, print run, type, and date range. Delivered as a paginated REST feed; no push webhooks are documented.
+## Where to find this API
 
-- **Human URL:** [https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html](https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html)
-- **Base URL:** `https://api.formlabs.com/developer/v1`
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Tags
-
-- Events
-- Notifications
-- Polling
-
-#### Properties
-
-- [Documentation](https://support.formlabs.com/s/topic/Developer-Portal)
-- [API Reference](https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html)
-- [OpenAPI](openapi/formlabs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formlabs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formlabs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Formlabs Web API (Dashboard) - Groups
-
-Create, update, and delete printer groups, move printers between groups, manage group memberships and invitations, and list each group's print queue.
-
-- **Human URL:** [https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html](https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html)
-- **Base URL:** `https://api.formlabs.com/developer/v1`
-
-#### Tags
-
-- Groups
-- Queue
-- Access Control
-
-#### Properties
-
-- [Documentation](https://support.formlabs.com/s/topic/Developer-Portal)
-- [API Reference](https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-web-api-latest.html)
-- [OpenAPI](openapi/formlabs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formlabs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formlabs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Formlabs Local API (PreFormServer)
-
-Local-network REST API served by the PreFormServer application for automating job preparation (import, auto-orient, auto-support, auto-layout, hollow, label), scene management, print-time estimation, and sending jobs to a printer or Fleet Control without launching the PreForm GUI.
-
-- **Human URL:** [https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-local-api-latest.html](https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-local-api-latest.html)
-- **Base URL:** `http://localhost`
-
-#### Tags
-
-- Local API
-- PreForm
-- Job Preparation
-
-#### Properties
-
-- [Documentation](https://formlabs.my.site.com/customerV2/s/article/Formlabs-Local-API)
-- [API Reference](https://formlabs-dashboard-api-resources.s3.amazonaws.com/formlabs-local-api-latest.html)
-- [SDK](https://github.com/Formlabs/formlabs-api-python)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/Formlabs)
-- [LinkedIn](https://www.linkedin.com/company/formlabs)
 - [Website](https://formlabs.com)
-- [Developer Platform](https://formlabs.com/materials/developer-platform/)
 - [Documentation](https://support.formlabs.com/s/topic/Developer-Portal)
-- [Plans](plans/formlabs-plans-pricing.yml)
-- [Rate Limits](rate-limits/formlabs-rate-limits.yml)
-- [Fin Ops](finops/formlabs-finops.yml)
+- [Blog](https://formlabs.com/blog/)
+- [GitHub](https://github.com/Formlabs)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.6** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 50.8 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 39.3 |
+| Access clarity | 5.3 |
+
+**Agent readiness 20.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 21.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/formlabs/](https://apis.io/providers/formlabs/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Formlabs: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/formlabs/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
